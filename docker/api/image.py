@@ -138,9 +138,14 @@ class ImageApiMixin(object):
         return self._result(self._post(api_url, params=params))
 
     @utils.check_resource
-    def inspect_image(self, image):
+    def inspect_image(self, image, remote=False):
+        params = {}
+        if remote:
+            params['remote'] = 1
         return self._result(
-            self._get(self._url("/images/{0}/json", image)), True
+            self._get(self._url("/images/{0}/json".format(image)),
+                      params=params),
+            True
         )
 
     def load_image(self, data):
