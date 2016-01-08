@@ -193,7 +193,8 @@ class ImageTest(DockerClientTest):
         fake_request.assert_called_with(
             'GET',
             url_prefix + 'images/test_image/json',
-            timeout=DEFAULT_TIMEOUT_SECONDS
+            timeout=DEFAULT_TIMEOUT_SECONDS,
+            params={}
         )
 
     def test_inspect_image_undefined_id(self):
